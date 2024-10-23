@@ -4,15 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.confirmview.ui.theme.ConfirmViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +25,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NoRecordImageView()
+                    NoRecordImageView(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .aspectRatio(1f)
+                    )
                 }
             }
         }
@@ -32,11 +37,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NoRecordImageView() {
+fun NoRecordImageView(modifier: Modifier) {
     Image(
         painter = painterResource(id = R.drawable.music_note),
         contentDescription = "Description of the image",
-        modifier = Modifier
+        modifier = modifier
+            .size(20.dp)
+            .aspectRatio(1f)
     )
 }
 
@@ -44,6 +51,6 @@ fun NoRecordImageView() {
 @Composable
 fun NoRecordImageViewPreview() {
     ConfirmViewTheme {
-        NoRecordImageView()
+        NoRecordImageView(modifier = Modifier)
     }
 }
