@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NoRecordImageView(modifier: Modifier) {
+fun NoRecordImageView(modifier: Modifier = Modifier) {
     Image(
         painter = painterResource(id = R.drawable.music_note),
         contentDescription = "Description of the image",
