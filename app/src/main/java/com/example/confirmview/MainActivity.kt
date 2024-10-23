@@ -22,12 +22,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             ConfirmViewTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+//                    modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     NoRecordImageView(
                         modifier = Modifier
-                            .size(20.dp)
+                            .size(100.dp)
                             .aspectRatio(1f)
                     )
                 }
@@ -42,7 +42,7 @@ fun NoRecordImageView(modifier: Modifier = Modifier) {
         painter = painterResource(id = R.drawable.music_note),
         contentDescription = "Description of the image",
         modifier = modifier
-            .size(20.dp)
+            .size(100.dp)
             .aspectRatio(1f)
     )
 }
