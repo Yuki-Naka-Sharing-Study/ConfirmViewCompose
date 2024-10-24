@@ -35,11 +35,7 @@ class MainActivity : ComponentActivity() {
                         contentAlignment = Alignment.Center
                     ) {
                         Column {
-                            NoRecordImageView(
-                                modifier = Modifier
-                                    .size(100.dp)
-                                    .aspectRatio(1f)
-                            )
+                            NoRecordImageView()
                             NoRecordText()
                         }
                     }
@@ -55,7 +51,7 @@ fun NoRecordImageView(modifier: Modifier = Modifier) {
         painter = painterResource(id = R.drawable.music_note),
         contentDescription = "Description of the image",
         modifier = modifier
-            .size(100.dp)
+            .size(200.dp)
             .aspectRatio(1f)
     )
 }
