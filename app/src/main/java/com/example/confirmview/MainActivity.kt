@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.confirmview.ui.theme.ConfirmViewTheme
@@ -32,11 +34,14 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        NoRecordImageView(
-                            modifier = Modifier
-                                .size(100.dp)
-                                .aspectRatio(1f)
-                        )
+                        Column {
+                            NoRecordImageView(
+                                modifier = Modifier
+                                    .size(100.dp)
+                                    .aspectRatio(1f)
+                            )
+                            NoRecordText()
+                        }
                     }
                 }
             }
@@ -68,7 +73,8 @@ fun NoRecordImageViewPreview() {
 @Composable
 fun NoRecordText(modifier: Modifier = Modifier) {
     Text(
-        text = "記録無し"
+        text = "記録無し",
+        fontWeight = FontWeight.Bold,
     )
 }
 
