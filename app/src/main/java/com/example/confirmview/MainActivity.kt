@@ -4,15 +4,27 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,9 +51,11 @@ class MainActivity : ComponentActivity() {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            NoRecordImageView()
-                            NoRecordText()
-                            NoRecordDescriptionText()
+                            SearchScreen()
+
+//                            NoRecordImageView()
+//                            NoRecordText()
+//                            NoRecordDescriptionText()
                         }
                     }
                 }
@@ -49,6 +63,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+// 以下は「記録無し」のコード
 
 @Composable
 fun NoRecordImageView(modifier: Modifier = Modifier) {
@@ -104,5 +120,46 @@ fun NoRecordDescriptionText(modifier: Modifier = Modifier) {
 fun NoRecordDescriptionTextPreview() {
     ConfirmViewTheme {
         NoRecordDescriptionText()
+    }
+}
+
+
+
+// 以下は「記録あり」のコード
+
+@Composable
+fun SearchBar(
+    query: String,
+    onQueryChange: (String) -> Unit
+) {
+    val modifier = Modifier
+        .fillMaxWidth()
+        .background(Color.Gray.copy(alpha = 0.1f), shape = RoundedCornerShape(12.dp))
+        .padding(8.dp)
+
+    Box(modifier = modifier) {
+        TextField(
+            value = query,
+            onValueChange = onQueryChange,
+            placeholder = { Text("曲名・アーティスト名で検索") },
+            leadingIcon = {
+                Icon(Icons.Default.Search, contentDescription = "Search Icon")
+            },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
+@Composable
+fun SearchScreen() {
+    var searchQuery by remember { mutableStateOf("") }
+
+    Column(modifier = Modifier.padding(16.dp)) {
+        SearchBar(
+            query = searchQuery,
+            onQueryChange = { searchQuery = it }
+        )
+        // 検索結果を表示するためのUIをここに追加。
     }
 }
