@@ -45,19 +45,30 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+                    // 以下は「記録無し」のコード
                     Box(
                         modifier = Modifier.fillMaxSize(),
-//                        contentAlignment = Alignment.Center
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            NoRecordImageView()
+                            NoRecordText()
+                            NoRecordDescriptionText()
+                        }
+                    }
+
+                    // 以下は「記録あり」のコード
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
                     ) {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Top
                         ) {
                             SearchScreen()
-
-//                            NoRecordImageView()
-//                            NoRecordText()
-//                            NoRecordDescriptionText()
                         }
                     }
                 }
